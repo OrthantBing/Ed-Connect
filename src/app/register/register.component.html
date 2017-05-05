@@ -1,0 +1,72 @@
+    <section class="login-bg"> 
+    <div class="login-container">
+      <img src="../../assets/img/logo_red.png" class="img-login">
+      <form class="login-form" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <div class="input-group">
+          <span class="input-group-addon" id="name"><i class="fa fa-user" aria-hidden="true"> </i></span>
+          
+          <input  
+                type="text" 
+                class="form-control" 
+                placeholder="Name" 
+                aria-describedby="name"
+                formControlName="name">
+
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon" id="email"><i class="fa fa-envelope" aria-hidden="true"> </i></span>
+          
+          <input 
+                type="text" 
+                class="form-control" 
+                placeholder="Email" 
+                aria-describedby="email"
+                formControlName="email">
+        
+        </div>
+            <div class="form-text error" *ngIf="registrationForm.controls.email.touched">
+              <div *ngIf="registrationForm.controls.email.hasError('email')"><small class="text-danger">Email is invalid.</small></div>
+            </div>
+        <div class="input-group">
+          <span class="input-group-addon" id="username"><i class="fa fa-user" aria-hidden="true"> </i></span>
+          
+          <input 
+                type="text" 
+                class="form-control" 
+                placeholder="Username" 
+                aria-describedby="username"
+                formControlName="username">
+
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon" id="password"><i class="fa fa-key" aria-hidden="true"></i></span>
+          <input 
+                type="password" 
+                class="form-control" 
+                placeholder="Password" 
+                aria-describedby="password"
+                formControlName="password">
+
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon" id="password"><i class="fa fa-key" aria-hidden="true"></i></span>
+          
+          <input 
+                type="password" 
+                class="form-control" 
+                placeholder="Re-enter Password" 
+                aria-describedby="password"
+                formControlName="repassword">
+        </div>
+          <div *ngIf="registrationForm.hasError('notValid')"><small class="text-danger">Passwords do not match.</small></div>
+        <div class="form-group last">
+            <div class="col-md-12 button-form">
+                <button 
+                      type="submit" 
+                      class="btn btn-danger btn-sm"
+                      [disabled]="!registrationForm.valid">Register &emsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+            </div>
+        </div>
+      </form>
+    </div>
+    </section>
