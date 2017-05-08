@@ -16,9 +16,16 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 import { LogoutComponent } from './logout/logout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
+// ngx bootstrap dependencies
+import { DatepickerModule } from 'ngx-bootstrap/datepicker';
+
 // ng-idle dependencies
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 import { ErrorComponent } from './errors/error.component';
+
+
+
+
 
 
 @NgModule({
@@ -32,6 +39,10 @@ import { ErrorComponent } from './errors/error.component';
     LogoutComponent,
     DashboardComponent,
     ErrorComponent,
+
+
+
+
   ],
   imports: [
     BrowserModule,
@@ -39,6 +50,9 @@ import { ErrorComponent } from './errors/error.component';
     HttpModule,
     routing,
     ReactiveFormsModule,
+
+    // ngx bootstrap thingy
+    DatepickerModule.forRoot(),
 
     // ng-idle thingy
     NgIdleKeepaliveModule.forRoot()

@@ -1,0 +1,12 @@
+<input 
+  type="text"
+  placeholder="dd-mm-yyyy"
+  [value]="getDate()"
+  (change)="onChange(inp.value)"
+  name="someinput"
+  #inp>
+<datepicker [(ngModel)]="dt" name="datepicker"></datepicker>
+<!--
+<div>{{dt}}</div>
+-->
+

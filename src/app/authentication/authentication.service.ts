@@ -80,9 +80,9 @@ export class AuthenticationService {
             .catch((error: any) => {
                 this.errorService.handleError(error.json());
                 if (error.status === 401){
-                    return Observable.throw(new Error(error));
+                    return Observable.throw(new Error(error.json()));
                 }
-                return Observable.throw(new Error(error));
+                return Observable.throw(new Error(error.json()));
             })
 
     }
