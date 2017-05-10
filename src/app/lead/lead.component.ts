@@ -3,7 +3,7 @@ import { LeadModel } from './lead.model';
 import { DateValidator } from './../shared/date.directive';
 import { LeadInterface } from './lead.interface';
 import { NgForm } from '@angular/forms';
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, Input } from '@angular/core';
 import { ImageResult, ResizeOptions } from 'ng2-imageupload';
 
 
@@ -13,7 +13,9 @@ import { ImageResult, ResizeOptions } from 'ng2-imageupload';
   styleUrls: ['./lead.component.css']
 })
 export class LeadComponent implements OnInit {
-  public lead: LeadInterface;
+
+  
+  @Input() public lead: LeadInterface;
   public genders = [
     { value: 'Female', display: 'Female' },
     { value: 'Male', display: 'Male' },

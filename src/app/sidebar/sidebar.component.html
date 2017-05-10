@@ -1,11 +1,11 @@
 <div class="row" style="margin-right: 0px;  margin-left: 0px; padding-top: 75px">
     <!-- Sidebar Links-->
     <div class=" sidebar-dash">
-            <a [routerLink]="['lead']"><div class="fa-side">
+            <a [routerLink]="['lead']" routerLinkActive="active"><div class="fa-side">
                 <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i><br>
                 <p class="sidebar-text">New Lead</p>
             </div></a>
-            <a><div class="fa-side">
+            <a [routerLink]="['leadlist']" routerLinkActive="active"><div class="fa-side">
                 <i class="fa fa-calendar-check-o fa-2x" aria-hidden="true"></i><br>
                 <p class="sidebar-text">Lead List</p>
             </div></a>

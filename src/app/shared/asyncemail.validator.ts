@@ -27,8 +27,14 @@ export class AsyncemailValidator implements Validator {
     return new Observable(observer => {
       control
       .valueChanges
-      .debounceTime(500)
-      .flatMap(value => this.leadService.validateEmail(email))
+      .filter(val => val.length >= 3)
+      .debounceTime(1300)
+      .distinctUntilChanged()
+      //.takeLast(5)
+
+
+      .switchMap(value => this.leadService.validateEmail(email))
+      
       .subscribe(
         data => {
           console.log(data);
@@ -36,10 +42,12 @@ export class AsyncemailValidator implements Validator {
           observer.complete();
         }
       )
-    });
+    })
+    
   }
 
 }
+
 
 /*
 export class AsyncemailValidator implements Validator {

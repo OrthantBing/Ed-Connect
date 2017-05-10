@@ -1,3 +1,4 @@
+import { LeadlistComponent } from './../leadlist/leadlist.component';
 import { AsyncemailValidator } from './../shared/asyncemail.validator';
 import { LeadService } from './../lead/lead.service';
 import { DateValidator } from './../shared/date.directive';
@@ -9,8 +10,10 @@ import { CommonModule } from '@angular/common';
 import { LeadComponent } from './../lead/lead.component';
 import { ImageUploadModule } from 'ng2-imageupload';
 import { DatepickerModule } from 'ngx-bootstrap/datepicker';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { DatepickertestComponent } from './../datepickertest/datepickertest.component';
 import { LeadprofileComponent } from './../leadprofile/leadprofile.component';
+
 
 @NgModule({
   imports: [
@@ -19,7 +22,7 @@ import { LeadprofileComponent } from './../leadprofile/leadprofile.component';
     dashboardRouting,
     ImageUploadModule,
     DatepickerModule,
-
+    NgxDatatableModule
   ],
   declarations: [
     LeadComponent,
@@ -28,6 +31,8 @@ import { LeadprofileComponent } from './../leadprofile/leadprofile.component';
     DateValidator,
     AsyncemailValidator,
     LeadprofileComponent,
+    LeadlistComponent,
+
   ],
   providers: [ LeadService ],
   bootstrap: []

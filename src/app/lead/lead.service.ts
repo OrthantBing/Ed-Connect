@@ -11,6 +11,23 @@ export class LeadService {
 
     }
     
+    getleadlist() {
+        const headers = new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem('token')
+        });
+
+        return this.http.get('http://localhost:4000/lead', {headers: headers})
+            .map((response: Response) => {
+                return response.json()
+            })
+            .catch((error: Response) => {
+                console.log(error.json());
+                this.errorService.handleError(error.json());
+                return Observable.throw(new Error(error.json()));
+            })
+    }
+    
     createlead(lead: LeadModel){
         const body = JSON.stringify(lead);
         const headers = new Headers({
@@ -43,6 +60,24 @@ export class LeadService {
 
             .catch((error: Response) => {
                 console.log(error.json());
+                return Observable.throw(new Error(error.json()));
+            })
+    }
+
+    getLeadById(id: string){
+        const headers = new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem('token')
+        });
+
+        return this.http.get('http://localhost:4000/lead/' + id, {headers: headers})
+            .map((response: Response) => {
+                return response.json()
+            })
+
+            .catch((error: Response) => {
+                console.log(error.json());
+                this.errorService.handleError(error.json());
                 return Observable.throw(new Error(error.json()));
             })
     }

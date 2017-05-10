@@ -28,6 +28,7 @@ import { ErrorComponent } from './errors/error.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +40,8 @@ import { ErrorComponent } from './errors/error.component';
     LogoutComponent,
     DashboardComponent,
     ErrorComponent,
+
+
 
 
 
