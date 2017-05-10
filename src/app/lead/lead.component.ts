@@ -184,7 +184,15 @@ export class LeadComponent implements OnInit {
 
     let leaddata = new LeadModel(this.lead);
     console.log(leaddata);
-    this.leadService.createlead(leaddata)
+    if (this.lead._id){
+      this.leadService.updatelead(leaddata)
+        .subscribe(
+          (data) => {
+            console.log(data);
+          }
+        );
+    } else {
+      this.leadService.createlead(leaddata)
       .subscribe(
         (data) => {
           this.lead._id = data._id;
@@ -192,6 +200,6 @@ export class LeadComponent implements OnInit {
         },
         error => console.error(error)
       );
+    } 
   }
-
 }

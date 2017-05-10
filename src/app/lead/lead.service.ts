@@ -28,6 +28,24 @@ export class LeadService {
             })
     }
     
+    updatelead(lead: LeadModel){
+        const body = JSON.stringify(lead);
+        const headers = new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem('token')
+        });
+
+        return this.http.patch('http://localhost:4000/lead/update/' + lead._id, body, {headers: headers})
+            .map((response: Response) => {
+                return response.json()
+            })
+            .catch((error: Response) => {
+                console.log(error.json());
+                this.errorService.handleError(error.json());
+                return Observable.throw(new Error(error.json()));
+            })
+    }
+    
     createlead(lead: LeadModel){
         const body = JSON.stringify(lead);
         const headers = new Headers({

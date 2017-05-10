@@ -134,7 +134,39 @@
                                   [(ngModel)]="lead.alternatephone">
 
                             </div>
-                            <div class="col-sm-4 form-group">
+                            <div class="col-sm-4 form-group" *ngIf="lead._id">
+<!-- 
+    The below is a hack to prevent the 
+    asyncEmailValidator. If we are in edit mode, we are not supposed
+    to check for the email validator. We can say that it is not saved.
+    -->
+                                <label>Email Address</label>
+                                <input 
+                                  type="email" 
+                                  placeholder="Enter Email Address Here.." 
+                                  class="form-control"
+                                  name="email"
+                                  [(ngModel)]="lead.email"
+                                  #email="ngModel"
+                                  required
+                                  >
+                   
+        <div *ngIf="email.touched && email.hasError('asyncInvalid')" class="alert alert-danger">
+            Email already registered
+        </div>
+        <div *ngIf="email.touched && email.hasError('required')" class="alert alert-danger">
+            Email is required
+        </div>
+                            </div>   
+                            
+                  
+                   
+
+<!--
+    The Current implementation is that we create two divs with the validator removed in
+    one and not removed in other.
+    -->
+                        <div class="col-sm-4 form-group" *ngIf="!lead._id">
 
                                 <label>Email Address</label>
                                 <input 
@@ -147,8 +179,6 @@
                                   required
                                   asyncEmailValidator
                                   >
-                                
-
                    
         <div *ngIf="email.touched && email.hasError('asyncInvalid')" class="alert alert-danger">
             Email already registered
@@ -156,12 +186,11 @@
         <div *ngIf="email.touched && email.hasError('required')" class="alert alert-danger">
             Email is required
         </div>
-
-
                             </div>   
                             
                   
-                        </div>             
+                       </div>
+
                         <div class="form-group">
 
                             <label>Address</label>
@@ -189,7 +218,7 @@
                                     </span>
                                     <input type="text" class="form-control" readonly>
                                 </div>
-                                <img [src]="lead.photo" [hidden]="!lead.photo" id='img-upload' style="width:128px;height:128px;"/>
+                                <img *ngIf="lead.photo" [src]="lead.photo" [hidden]="!lead.photo" id='img-upload' style="width:128px;height:128px;"/>
                             </div>
                         </div> 
 
